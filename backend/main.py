@@ -42,7 +42,7 @@ cors_origins = [
     origin.strip()
     for origin in os.getenv(
         "WINDLINE_CORS_ORIGINS",
-        "http://localhost:5174,http://127.0.0.1:5174",
+        "http://localhost:5174,http://127.0.0.1:5174,https://windline-forecast-analysis.vercel.app",
     ).split(",")
     if origin.strip()
 ]
@@ -50,8 +50,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=cors_origins,
     allow_credentials=False,
-    allow_methods=["GET", "POST"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type"],
 )
 
 
